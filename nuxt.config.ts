@@ -6,10 +6,14 @@ export default defineNuxtConfig({
     // 如果不是開發環境 (即生產環境)，就使用 /veekend-nuxt/
     baseURL: process.env.NODE_ENV === "production" ? "/veekend-nuxt/" : "/",
   },
-
   devServer: {
     host: "127.0.0.1",
     port: 9999,
+  },
+  vite: {
+    optimizeDeps: {
+      include: ["@vue/devtools-core", "@vue/devtools-kit"],
+    },
   },
   modules: [
     "@nuxt/a11y",
