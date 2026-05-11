@@ -7,8 +7,13 @@ export default defineNuxtConfig({
     baseURL: process.env.NODE_ENV === 'production' ? '/veekend-nuxt/' : '/',
   },
   image: {
-    // 關鍵設定：強制指定 provider 為 ipx 並確保它不會抓錯路徑
+    // 解決關鍵：將 provider 設定為 static，或者修正 IPX 的處理路徑
     provider: 'ipx',
+    ipx: {
+      // 確保在生產環境下，IPX 的請求路徑是正確的
+      // 這邊通常應該是指向根路徑下的 _ipx 處理器
+      baseURL: process.env.NODE_ENV === 'production' ? '/veekend-nuxt/_ipx' : '/_ipx',
+    },
   },
   nitro: {
     prerender: {
