@@ -32,14 +32,14 @@ const { data: blogPosts } = await useAsyncData('blog-posts', () => {
           <article class="post">
             <header class="post__head">
               <NuxtLink class="post__cover" :to="item.path">
-                <NuxtImg
+                <!-- <NuxtImg
                   v-if="item.cover?.small || item.cover?.large"
                   :src="item.cover?.small || item.cover?.large"
                   :alt="item.title || ''"
                   width="800"
                   height="420"
                   format="webp"
-                />
+                /> -->
               </NuxtLink>
 
               <div class="post__headText">
@@ -95,7 +95,7 @@ const { data: blogPosts } = await useAsyncData('blog-posts', () => {
     <hr />
 
     <!-- 原有的部落格文章區塊 -->
-    <section v-if="blogPosts?.length" class="posts">
+    <!-- <section v-if="blogPosts?.length" class="posts">
       <article v-for="post in blogPosts" :key="post.path" class="post">
         <header class="post__head">
           <h2 class="post__title">
@@ -109,7 +109,7 @@ const { data: blogPosts } = await useAsyncData('blog-posts', () => {
 
         <ContentRenderer :value="post" class="post__content" />
       </article>
-    </section>
+    </section> -->
   </div>
 </template>
 
