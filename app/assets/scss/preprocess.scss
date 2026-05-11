@@ -1,0 +1,309 @@
+@use 'sass:map';
+
+$theme-light: (
+  primary: #176466,
+  primary-darken: #0a3738,
+  primary-lighten: #d9efef,
+  primary-container: #eef4f3,
+  secondary: #fc890c,
+  secondary-darken: #6b4823,
+  secondary-lighten: #ffecd8,
+  secondary-container: #fff8eb,
+  title: #373b3c,
+  subtitle: #4c5858,
+  font: #212b2b,
+  placeholder: #757575,
+  white: #ffffff,
+  surface: #fbfdfb,
+  container: #f3f7fa,
+  divider: #bfc8c6,
+  stroke: #8e9190,
+  disabled: #d8d8d8,
+  red1: #cd3033,
+  red1-container: #fff9f9,
+  green1: #138251,
+  green1-container: #f8fffc,
+  blue1: #0168ee,
+  blue1-container: #f3f8ff,
+);
+$theme-dark: (
+  primary: #289da1,
+  primary-darken: #0a3738,
+  primary-lighten: #d9efef,
+  primary-container: #131315,
+  secondary: #fc890c,
+  secondary-darken: #6b4823,
+  secondary-lighten: #ffecd8,
+  secondary-container: #fff8eb,
+  title: #ffffff,
+  subtitle: #ffffff,
+  font: #ffffff,
+  placeholder: #757575,
+  white: #2f2e31,
+  surface: #2f2e31,
+  container: #1a1a1a,
+  divider: #bfc8c6,
+  stroke: #8e9190,
+  disabled: #3f3f3f,
+  red1: #cd3033,
+  red1-container: #fff9f9,
+  green1: #138251,
+  green1-container: #f8fffc,
+  blue1: #0168ee,
+  blue1-container: #f3f8ff,
+);
+
+// Color variables
+$primary: map.get($theme-light, primary);
+// Non-color variables
+$border-radius-s: 4px;
+$border-radius-m: 8px;
+$border-radius-l: 20px;
+$border-radius-xl: 50px;
+$header-height: 60px;
+$backstage-header-height: 56px;
+$z-map: 1;
+$z-panel: 2;
+$z-popover: 20;
+$z-tooltip: 100;
+$z-header: 1005;
+$z-to-top: 1005;
+$z-left-menu: 1006;
+$z-dialog: 1010;
+$z-alert: 3000;
+$z-backdrop: 9998;
+$z-fetch-loading: 9999;
+$transition-fast: all 0.2s ease-in-out;
+$transition-slow: all 0.5s ease-in-out;
+$focus-visible: 4px dashed var(--secondary);
+
+@mixin export-theme-vars($theme-map) {
+  @each $key, $value in $theme-map {
+    --#{"" + $key}: #{$value};
+  }
+}
+
+:root {
+  @include export-theme-vars($theme-light);
+  --border-radius-s: #{$border-radius-s};
+  --border-radius-m: #{$border-radius-m};
+  --border-radius-l: #{$border-radius-l};
+  --border-radius-xl: #{$border-radius-xl};
+  --header-height: #{$header-height};
+  --backstage-header-height: #{$backstage-header-height};
+  --z-map: #{$z-map};
+  --z-panel: #{$z-panel};
+  --z-popover: #{$z-popover};
+  --z-tooltip: #{$z-tooltip};
+  --z-header: #{$z-header};
+  --z-to-top: #{$z-to-top};
+  --z-left-menu: #{$z-left-menu};
+  --z-dialog: #{$z-dialog};
+  --z-alert: #{$z-alert};
+  --z-backdrop: #{$z-backdrop};
+  --z-fetch-loading: #{$z-fetch-loading};
+  --transition-fast: #{$transition-fast};
+  --transition-slow: #{$transition-slow};
+  --focus-visible: #{$focus-visible};
+}
+[data-theme='dark_mode'] {
+  @include export-theme-vars($theme-dark);
+}
+
+// FontFamily
+$font-family-sans: 'roboto', 'Noto Sans TC', sans-serif;
+// FontSize
+$font-head1: 1.75rem; // 28px
+$font-head2: 1.5rem; // 24px
+$font-subtitle1: 1.25rem; // 20px
+$font-subtitle2: 1.125rem; // 18px
+$font-body1: 1rem; // 16px
+$font-body2: 0.875rem; // 14px
+// FontWeight
+$font-weight-bold: 700;
+$font-weight-medium: 500;
+$font-weight-regular: 400;
+$font-weight-thin: 100;
+// LineHeight
+$line-height: 1.5;
+// LetterSpacing
+@function calc-letter-spacing($font-size, $multiplier: 0.02) {
+  @return $font-size * $multiplier;
+}
+
+@mixin head1-bold {
+  font-family: $font-family-sans;
+  font-size: $font-head1;
+  font-weight: $font-weight-bold;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-head1);
+  @content;
+}
+@mixin head1-medium {
+  font-family: $font-family-sans;
+  font-size: $font-head1;
+  font-weight: $font-weight-medium;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-head1);
+  @content;
+}
+@mixin head1-regular {
+  font-family: $font-family-sans;
+  font-size: $font-head1;
+  font-weight: $font-weight-regular;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-head1);
+  @content;
+}
+@mixin head2-bold {
+  font-family: $font-family-sans;
+  font-size: $font-head2;
+  font-weight: $font-weight-bold;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-head2);
+  @content;
+}
+@mixin head2-medium {
+  font-family: $font-family-sans;
+  font-size: $font-head2;
+  font-weight: $font-weight-medium;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-head2);
+  @content;
+}
+@mixin head2-regular {
+  font-family: $font-family-sans;
+  font-size: $font-head2;
+  font-weight: $font-weight-regular;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-head2);
+  @content;
+}
+@mixin subtitle1-bold {
+  font-family: $font-family-sans;
+  font-size: $font-subtitle1;
+  font-weight: $font-weight-bold;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-subtitle1);
+  @content;
+}
+@mixin subtitle1-medium {
+  font-family: $font-family-sans;
+  font-size: $font-subtitle1;
+  font-weight: $font-weight-medium;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-subtitle1);
+  @content;
+}
+@mixin subtitle1-regular {
+  font-family: $font-family-sans;
+  font-size: $font-subtitle1;
+  font-weight: $font-weight-regular;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-subtitle1);
+  @content;
+}
+@mixin subtitle2-bold {
+  font-family: $font-family-sans;
+  font-size: $font-subtitle2;
+  font-weight: $font-weight-bold;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-subtitle2);
+  @content;
+}
+@mixin subtitle2-medium {
+  font-family: $font-family-sans;
+  font-size: $font-subtitle2;
+  font-weight: $font-weight-medium;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-subtitle2);
+  @content;
+}
+@mixin subtitle2-regular {
+  font-family: $font-family-sans;
+  font-size: $font-subtitle2;
+  font-weight: $font-weight-regular;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-subtitle2);
+  @content;
+}
+@mixin body1-bold {
+  font-family: $font-family-sans;
+  font-size: $font-body1;
+  font-weight: $font-weight-bold;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-body1);
+  @content;
+}
+@mixin body1-medium {
+  font-family: $font-family-sans;
+  font-size: $font-body1;
+  font-weight: $font-weight-medium;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-body1);
+  @content;
+}
+@mixin body1-regular {
+  font-family: $font-family-sans;
+  font-size: $font-body1;
+  font-weight: $font-weight-regular;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-body1);
+  @content;
+}
+@mixin body2-bold {
+  font-family: $font-family-sans;
+  font-size: $font-body2;
+  font-weight: $font-weight-bold;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-body2);
+  @content;
+}
+@mixin body2-medium {
+  font-family: $font-family-sans;
+  font-size: $font-body2;
+  font-weight: $font-weight-medium;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-body2);
+  @content;
+}
+@mixin body2-regular {
+  font-family: $font-family-sans;
+  font-size: $font-body2;
+  font-weight: $font-weight-regular;
+  line-height: $line-height;
+  letter-spacing: calc-letter-spacing($font-body2);
+  @content;
+}
+
+@mixin xs-mobile {
+  @media only screen and (max-width: 375px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+@mixin laptop {
+  @media only screen and (min-width: 1280px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media only screen and (min-width: 1440px) {
+    @content;
+  }
+}
+@mixin xl-desktop {
+  @media only screen and (min-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin hover {
+  @media (hover: hover) {
+    @content;
+  }
+}
