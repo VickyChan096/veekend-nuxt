@@ -1,5 +1,5 @@
 {
-  "cSpell.words": ["veekend"],
+  "cSpell.words": ["Nuxt", "veekend"],
   "editor.formatOnSave": true,
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   // 存檔時不要自動「整理 imports」（例如重新排序、移除未使用），避免每次存檔造成大量 import 變動

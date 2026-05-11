@@ -75,7 +75,7 @@ const { data: blogPosts } = await useAsyncData('blog-posts', () => {
               <div class="post__catalogTitle">本週景點</div>
               <div class="post__catalogLinks">
                 <NuxtLink
-                  v-for="d in item.destinations as WeeklyDestination[]"
+                  v-for="d in item.destinations"
                   :key="d.id"
                   class="post__catalogLink"
                   :to="`${item.path}#${d.id}`"
