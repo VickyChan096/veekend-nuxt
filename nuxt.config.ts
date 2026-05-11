@@ -6,6 +6,16 @@ export default defineNuxtConfig({
     // 如果不是開發環境 (即生產環境)，就使用 /veekend-nuxt/
     baseURL: process.env.NODE_ENV === 'production' ? '/veekend-nuxt/' : '/',
   },
+  image: {
+    // 關鍵設定：強制指定 provider 為 ipx 並確保它不會抓錯路徑
+    provider: 'ipx',
+  },
+  nitro: {
+    prerender: {
+      // 建議開啟這個，避免因為幾張圖片抓不到就讓整個 Action 報銷
+      failOnError: false,
+    },
+  },
   devServer: {
     host: '127.0.0.1',
     port: 9999,
