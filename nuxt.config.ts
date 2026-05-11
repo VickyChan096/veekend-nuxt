@@ -10,6 +10,46 @@ export default defineNuxtConfig({
     host: '127.0.0.1',
     port: 9999,
   },
+  // content: {
+  //   build: {
+  //     markdown: {
+  //       toc: {
+  //         depth: 3,
+  //         searchDepth: 3,
+  //       },
+  //       highlight: {
+  //         theme: {
+  //           default: 'github-light',
+  //           dark: 'github-dark',
+  //         },
+  //         langs: [
+  //           'json',
+  //           'js',
+  //           'ts',
+  //           'html',
+  //           'css',
+  //           'vue',
+  //           'shell',
+  //           'md',
+  //           'mdc',
+  //           'yaml',
+  //           'bash',
+  //           'scss',
+  //           'sql',
+  //         ],
+  //       },
+  //     },
+  //     pathMeta: {
+  //       forceLeadingSlash: true,
+  //     },
+  //   },
+  //   renderer: {
+  //     anchorLinks: { h2: true, h3: true, h4: true },
+  //   },
+  //   watch: {
+  //     enabled: true,
+  //   },
+  // },
   css: ['@/assets/scss/main.scss'],
   vite: {
     optimizeDeps: {
