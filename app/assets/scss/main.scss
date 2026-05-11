@@ -1,0 +1,210 @@
+// @use 'flatpickr/_flatpickr';
+// @use 'vuetify/_button';
+// @use 'vuetify/_field';
+// @use 'vuetify/_radio';
+// @use 'vuetify/_checkbox';
+@use '_reset';
+// @use '_transition';
+// @use '_table';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  // outline: 1px solid #d3d3d3;
+}
+html {
+  // Vuetify 主動加上 overflow-y:scroll，有需要可改回預設值
+  overflow-y: initial !important;
+}
+body {
+  @include body1-regular;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+a {
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: var(--focus-visible);
+  }
+}
+
+.img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+.transition-title {
+  view-transition-name: title;
+}
+.noscript-message {
+  padding: 20px;
+  color: white;
+  text-align: center;
+  background-color: var(--blue1);
+}
+.access-key {
+  color: var(--white);
+  font-size: 1rem;
+  transition: var(--transition-fast);
+
+  &:focus-visible {
+    outline: var(--focus-visible);
+  }
+}
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+.rotate180 {
+  display: inline-block;
+  transform: rotate(180deg);
+}
+.col-span {
+  grid-column: 1 / -1;
+}
+
+.xs-mobile-only {
+  display: none;
+
+  @include xs-mobile {
+    display: block;
+  }
+}
+
+.head1-bold {
+  @include head1-bold;
+}
+.head1-medium {
+  @include head1-medium;
+}
+.head1-regular {
+  @include head1-regular;
+}
+.head2-bold {
+  @include head2-bold;
+}
+.head2-medium {
+  @include head2-medium;
+}
+.head2-regular {
+  @include head2-regular;
+}
+.subtitle1-bold {
+  @include subtitle1-bold;
+}
+.subtitle1-medium {
+  @include subtitle1-medium;
+}
+.subtitle1-regular {
+  @include subtitle1-regular;
+}
+.subtitle2-bold {
+  @include subtitle2-bold;
+}
+.subtitle2-medium {
+  @include subtitle2-medium;
+}
+.subtitle2-regular {
+  @include subtitle2-regular;
+}
+.body1-bold {
+  @include body1-bold;
+}
+.body1-medium {
+  @include body1-medium;
+}
+.body1-regular {
+  @include body1-regular;
+}
+.body2-bold {
+  @include body2-bold;
+}
+.body2-medium {
+  @include body2-medium;
+}
+.body2-regular {
+  @include body2-regular;
+}
+
+.primary {
+  color: var(--primary);
+}
+.primary-darken {
+  color: var(--primary-darken);
+}
+.primary-lighten {
+  color: var(--primary-lighten);
+}
+.primary-container {
+  color: var(--primary-container);
+}
+.secondary {
+  color: var(--secondary);
+}
+.secondary-darken {
+  color: var(--secondary-darken);
+}
+.secondary-lighten {
+  color: var(--secondary-lighten);
+}
+.secondary-container {
+  color: var(--secondary-container);
+}
+.title {
+  color: var(--title);
+}
+.subtitle {
+  color: var(--subtitle);
+}
+.font {
+  color: var(--font);
+}
+.placeholder {
+  color: var(--placeholder);
+}
+.white {
+  color: var(--white);
+}
+.surface {
+  color: var(--surface);
+}
+.container {
+  color: var(--container);
+}
+.divider {
+  color: var(--divider);
+}
+.stroke {
+  color: var(--stroke);
+}
+.disabled {
+  color: var(--disabled);
+}
+.red1 {
+  color: var(--red1);
+}
+.red1-container {
+  color: var(--red1-container);
+}
+.green1 {
+  color: var(--green1);
+}
+.green1-container {
+  color: var(--green1-container);
+}
+.blue1 {
+  color: var(--blue1);
+}
+.blue1-container {
+  color: var(--blue1-container);
+}
