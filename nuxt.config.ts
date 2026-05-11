@@ -7,11 +7,13 @@ export default defineNuxtConfig({
     baseURL: process.env.NODE_ENV === 'production' ? '/veekend-nuxt/' : '/',
   },
   image: {
-    // 解決關鍵：將 provider 設定為 static，或者修正 IPX 的處理路徑
     provider: 'ipx',
+    // 解決路徑重複的核心：手動定義 alias
+    alias: {
+      '/images': '/images',
+    },
     ipx: {
-      // 確保在生產環境下，IPX 的請求路徑是正確的
-      // 這邊通常應該是指向根路徑下的 _ipx 處理器
+      // 確保 IPX 處理器的入口路徑正確，不受 baseURL 自動補全干擾
       baseURL: process.env.NODE_ENV === 'production' ? '/veekend-nuxt/_ipx' : '/_ipx',
     },
   },

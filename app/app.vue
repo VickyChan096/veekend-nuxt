@@ -32,14 +32,15 @@ const { data: blogPosts } = await useAsyncData('blog-posts', () => {
           <article class="post">
             <header class="post__head">
               <NuxtLink class="post__cover" :to="item.path">
-                <!-- <NuxtImg
+                <NuxtImg
                   v-if="item.cover?.small || item.cover?.large"
                   :src="item.cover?.small || item.cover?.large"
                   :alt="item.title || ''"
                   width="800"
                   height="420"
                   format="webp"
-                /> -->
+                />
+                <img :src="item.cover?.small" alt="" style="width: 120px" />
               </NuxtLink>
 
               <div class="post__headText">
