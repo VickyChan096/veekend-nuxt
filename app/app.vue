@@ -23,6 +23,10 @@ const { data: blogPosts } = await useAsyncData('blog-posts', () => {
 
 // GitHub Pages 的 base URL 不會自動加在靜態圖片路徑上，需手動處理
 const { app } = useRuntimeConfig()
+
+// 新增 resolveImg helper：讀取 useRuntimeConfig().app.baseURL，對 / 開頭的路徑自動補上 base URL（本機開發時 base 是 /，不影響效果）。
+// <NuxtImg :src> 改用 resolveImg(...) — 路徑會正確變成 /veekend-nuxt/images/...。
+// 移除 debug 用的 <img> 標籤（第 43 行那個 style="width: 120px" 的測試用標籤）。
 function resolveImg(path?: string | null): string | undefined {
   if (!path) return undefined
   const base = app.baseURL.endsWith('/') ? app.baseURL.slice(0, -1) : app.baseURL
@@ -42,12 +46,13 @@ function resolveImg(path?: string | null): string | undefined {
               <NuxtLink class="post__cover" :to="item.path">
                 <NuxtImg
                   v-if="item.cover?.small || item.cover?.large"
-                  :src="resolveImg(item.cover?.small || item.cover?.large)"
                   :alt="item.title || ''"
                   width="800"
                   height="420"
                   format="webp"
                 />
+                <img :src="resolveImg(item.cover?.small)" alt="" />
+                123
               </NuxtLink>
 
               <div class="post__headText">

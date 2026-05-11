@@ -11,24 +11,12 @@ export default defineNuxtConfig({
     // 在生產環境下（GitHub Pages），我們不需要也無法使用 ipx 處理器
     // 將其設為 'none' 或 'static' 會讓路徑保持原樣
     provider: process.env.NODE_ENV === 'production' ? 'none' : 'ipx',
-
-    // 確保 alias 不會干擾路徑
-    alias: {
-      '/images': '/images',
-    },
-  },
-
-  // 如果你是用 Nuxt Content v3，請確保它不會自動把圖片轉給 NuxtImg
-  content: {
-    build: {
-      markdown: {},
-    },
   },
   nitro: {
-    prerender: {
-      // 建議開啟這個，避免因為幾張圖片抓不到就讓整個 Action 報銷
-      failOnError: false,
-    },
+    // prerender: {
+    //   // 建議開啟這個，避免因為幾張圖片抓不到就讓整個 Action 報銷
+    //   failOnError: false,
+    // },
   },
   devServer: {
     host: '127.0.0.1',
