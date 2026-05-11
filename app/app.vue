@@ -20,6 +20,14 @@ const { data: weeklyPosts } = await useAsyncData('weekly-posts', () => {
 const { data: blogPosts } = await useAsyncData('blog-posts', () => {
   return queryCollection('blog').order('date', 'DESC').all()
 })
+
+// GitHub Pages 的 base URL 不會自動加在靜態圖片路徑上，需手動處理
+const { app } = useRuntimeConfig()
+function resolveImg(path?: string | null): string | undefined {
+  if (!path) return undefined
+  const base = app.baseURL.endsWith('/') ? app.baseURL.slice(0, -1) : app.baseURL
+  return path.startsWith('/') ? `${base}${path}` : path
+}
 </script>
 
 <template>
@@ -34,13 +42,12 @@ const { data: blogPosts } = await useAsyncData('blog-posts', () => {
               <NuxtLink class="post__cover" :to="item.path">
                 <NuxtImg
                   v-if="item.cover?.small || item.cover?.large"
-                  :src="item.cover?.small || item.cover?.large"
+                  :src="resolveImg(item.cover?.small || item.cover?.large)"
                   :alt="item.title || ''"
                   width="800"
                   height="420"
                   format="webp"
                 />
-                <img :src="item.cover?.small" alt="" style="width: 120px" />
               </NuxtLink>
 
               <div class="post__headText">

@@ -7,14 +7,21 @@ export default defineNuxtConfig({
     baseURL: process.env.NODE_ENV === 'production' ? '/veekend-nuxt/' : '/',
   },
   image: {
-    provider: 'ipx',
-    // 解決路徑重複的核心：手動定義 alias
+    // 【核心修正】
+    // 在生產環境下（GitHub Pages），我們不需要也無法使用 ipx 處理器
+    // 將其設為 'none' 或 'static' 會讓路徑保持原樣
+    provider: process.env.NODE_ENV === 'production' ? 'none' : 'ipx',
+
+    // 確保 alias 不會干擾路徑
     alias: {
       '/images': '/images',
     },
-    ipx: {
-      // 確保 IPX 處理器的入口路徑正確，不受 baseURL 自動補全干擾
-      baseURL: process.env.NODE_ENV === 'production' ? '/veekend-nuxt/_ipx' : '/_ipx',
+  },
+
+  // 如果你是用 Nuxt Content v3，請確保它不會自動把圖片轉給 NuxtImg
+  content: {
+    build: {
+      markdown: {},
     },
   },
   nitro: {
