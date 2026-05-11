@@ -46,13 +46,14 @@ function resolveImg(path?: string | null): string | undefined {
               <NuxtLink class="post__cover" :to="item.path">
                 <NuxtImg
                   v-if="item.cover?.small || item.cover?.large"
+                  :src="resolveImg(item.cover?.small || item.cover?.large)"
                   :alt="item.title || ''"
                   width="800"
                   height="420"
                   format="webp"
                 />
                 <img :src="resolveImg(item.cover?.small)" alt="" />
-                123
+                456
               </NuxtLink>
 
               <div class="post__headText">
