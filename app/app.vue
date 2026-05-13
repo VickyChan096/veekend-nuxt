@@ -34,9 +34,8 @@ function resolveImg(path?: string | null): string | undefined {
 }
 </script>
 
-<template>
+<!-- <template>
   <div>
-    <!-- 週記區塊 -->
     <section v-if="weeklyPosts?.length" class="weekly-section">
       <h3>54 週挑戰</h3>
       <ul>
@@ -105,11 +104,8 @@ function resolveImg(path?: string | null): string | undefined {
         </li>
       </ul>
     </section>
-
     <hr />
-
-    <!-- 原有的部落格文章區塊 -->
-    <!-- <section v-if="blogPosts?.length" class="posts">
+    <section v-if="blogPosts?.length" class="posts">
       <article v-for="post in blogPosts" :key="post.path" class="post">
         <header class="post__head">
           <h2 class="post__title">
@@ -123,8 +119,13 @@ function resolveImg(path?: string | null): string | undefined {
 
         <ContentRenderer :value="post" class="post__content" />
       </article>
-    </section> -->
+    </section>
   </div>
+</template> -->
+<template>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <style lang="scss" scoped>
